@@ -2,14 +2,12 @@
 
 ## This solution is composed by three parts
  1. Jenkins' [Metrics Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Metrics+Plugin)
- 2. A python script, which gets metrics from above plugin and transform it in a readable Zabbix item.
+ 2. A python (2) script, which gets metrics from above plugin and transform it in a readable Zabbix item.
  3. A Zabbix Agentd config file which runs the above script and sends result to  Zabbix server
 
 ## Install
-1. First install Jenkins' [Metrics Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Metrics+Plugin) and create a access key.
-2. Put Jenkins’ URL and access key into `jenkins-metrics.py`
-3. Move `jenkins-metrics.py` and `jenkins_zabbix.conf` to Jenkins master instance.
-4. Now take another look at Jenkins' [Metrics Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Metrics+Plugin) to know more about these metrics and start creating items in Zabbix server
+Install the Metrics Jenkins plugin, create a API Key (Jenkins->Configure->Metrics)
+Install this ansible role, configure the variables "zabbix_jenkins_url" and "zabbix_jenkins_key".
 
 ---
 
