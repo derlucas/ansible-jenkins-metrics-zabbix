@@ -8,8 +8,8 @@
 import urllib, json, sys
 
 metrics = {}
-JENKINS_URL = "CHANGE IT"
-PLUGIN_KEY = "CHANGE IT"
+JENKINS_URL = "{{zabbix_jenkins_url}}"
+PLUGIN_KEY = "{{zabbix_jenkins_key}}"
 
 def denormalize(data, keyname):
     for d in data.keys():

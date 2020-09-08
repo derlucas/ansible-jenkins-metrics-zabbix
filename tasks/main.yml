@@ -1,0 +1,19 @@
+---
+
+- name: install zabbix-jenkins metrics python script.
+  template:
+    src: "jenkins-metrics.py.j2"
+    dest: "/usr/local/bin/jenkins-metrics.py"
+    owner: root
+    group: root
+    mode: 0755
+  become: yes
+
+
+- name: install zabbix-jenkins zabbix config
+  copy:
+    src: jenkins_zabbix.conf
+    dest: /etc/zabbix/zabbix_agentd.d/jenkins_zabbix.conf
+    owner: root
+    group: root
+    mode: 0644
