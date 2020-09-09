@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>4.4</version>
+    <date>2020-09-09T08:37:31Z</date>
+    <groups>
+        <group>
+            <name>Templates/Applications</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template App Jenkins Metrics</template>
+            <name>Template App Jenkins Metrics</name>
+            <groups>
+                <group>
+                    <name>Templates/Applications</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Jenkins</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Executor Count</name>
+                    <key>jenkins.metrics[gauges.jenkins.executor.count.value.value]</key>
+                    <applications>
+                        <application>
+                            <name>Jenkins</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Executor Free</name>
+                    <key>jenkins.metrics[gauges.jenkins.executor.free.value.value]</key>
+                    <applications>
+                        <application>
+                            <name>Jenkins</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Node Count</name>
+                    <key>jenkins.metrics[gauges.jenkins.node.count.value.value]</key>
+                    <applications>
+                        <application>
+                            <name>Jenkins</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Node Count Offline</name>
+                    <key>jenkins.metrics[gauges.jenkins.node.offline.value.value]</key>
+                    <applications>
+                        <application>
+                            <name>Jenkins</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(#1)}&lt;&gt;0</expression>
+                            <name>Jenkins Node Offline</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Node Count Online</name>
+                    <key>jenkins.metrics[gauges.jenkins.node.online.value.value]</key>
+                    <applications>
+                        <application>
+                            <name>Jenkins</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Plugins with Update Count</name>
+                    <key>jenkins.metrics[gauges.jenkins.plugins.withUpdate.value]</key>
+                    <history>14d</history>
+                    <applications>
+                        <application>
+                            <name>Jenkins</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Queue Blocked</name>
+                    <key>jenkins.metrics[gauges.jenkins.queue.blocked.value.value]</key>
+                    <applications>
+                        <application>
+                            <name>Jenkins</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(#1)}&lt;&gt;0</expression>
+                            <name>Jenkins Queue Blocked</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Queue Size</name>
+                    <key>jenkins.metrics[gauges.jenkins.queue.size.value.value]</key>
+                    <applications>
+                        <application>
+                            <name>Jenkins</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(#1)}&gt;=10</expression>
+                            <name>Jenkins Queue Size Warning</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Queue Stuck</name>
+                    <key>jenkins.metrics[gauges.jenkins.queue.stuck.value.value]</key>
+                    <applications>
+                        <application>
+                            <name>Jenkins</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(#1)}&lt;&gt;0</expression>
+                            <name>Jenkins Queue Stuck</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+        </template>
+    </templates>
+    <graphs>
+        <graph>
+            <name>Jenkins Executor</name>
+            <graph_items>
+                <graph_item>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>Template App Jenkins Metrics</host>
+                        <key>jenkins.metrics[gauges.jenkins.executor.count.value.value]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>F63100</color>
+                    <item>
+                        <host>Template App Jenkins Metrics</host>
+                        <key>jenkins.metrics[gauges.jenkins.executor.free.value.value]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Jenkins Job Queue</name>
+            <graph_items>
+                <graph_item>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>Template App Jenkins Metrics</host>
+                        <key>jenkins.metrics[gauges.jenkins.queue.blocked.value.value]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>F63100</color>
+                    <item>
+                        <host>Template App Jenkins Metrics</host>
+                        <key>jenkins.metrics[gauges.jenkins.queue.size.value.value]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <color>2774A4</color>
+                    <item>
+                        <host>Template App Jenkins Metrics</host>
+                        <key>jenkins.metrics[gauges.jenkins.queue.stuck.value.value]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Jenkins Nodes Online</name>
+            <graph_items>
+                <graph_item>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>Template App Jenkins Metrics</host>
+                        <key>jenkins.metrics[gauges.jenkins.node.online.value.value]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+</zabbix_export>
